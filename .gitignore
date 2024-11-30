@@ -53,3 +53,7 @@ Thumbs.db
 ###############
 .gaspyrc.json
 open_tunnel*.sh
+
+.idea/
+/build/
+/GASpy.egg-info/
