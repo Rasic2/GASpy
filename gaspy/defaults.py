@@ -200,6 +200,88 @@ def adsorbates():
     adsorbates['O'] = Atoms('O')
     adsorbates['C'] = Atoms('C')
 
+    # MS build adn vasp calc
+    # adsorbates['CO2'] = Atoms(symbols=['C','O','O'], positions=[[0., 0., 0.],
+    #                                                           [1.177, 0., 0],
+    #                                                           [-1.177, 0, 0]])
+
+    # Ti slab_001 OPT(ZUIZAO)
+    adsorbates['CO2_1'] = Atoms(symbols=['C', 'O', 'O'], positions=[[0., 0., 0.],
+                                                                    [0.59250299, 1.02608547, 0.29225999],
+                                                                    [-0.59241074, -1.02608544, 0.29194591]])
+    # V slab_011 OPT(houlai)
+    adsorbates['CO2'] = Atoms(symbols=['C', 'O', 'O'], positions=[[0., 0., 0.],
+                                                                  [1.10510335, -0.80439089, 0.18423197],
+                                                                  [-1.22583122, -0.60635389, 0.22554259]])
+
+    # MS build and vasp calc
+    #    adsorbates['COOH'] = Atoms(symbols=['C','O','O','H'], positions=[[0., 0., 0.],
+    #                                                                     [-0.707, 0.808, 0.808],
+    #                                                                     [1.184, -0.134, -0.134],
+    #                                                                     [-0.073, 1.35,1.35]])
+    #
+    # Al COOH slab_001 OPT
+    adsorbates['COOH'] = Atoms(symbols=['C', 'H', 'O', 'O'], positions=[[0., 0., 0.],
+                                                                        [0.08539948, 0.11527301, 1.90204107],
+                                                                        [-0.60576478, 0.07895150, 1.19815674],
+                                                                        [1.29133575, -0.01376527, 0.01753967]])
+
+    # MS build and vasp calc
+    # adsorbates['HCOO'] = Atoms(symbols=['C','H','O','O'], positions=[[0., 0., 0.],
+    #                                                                 [-0.557,-0.682, -0.682],
+    #                                                                 [-0.566, 0.805, 0.805],
+    #                                                                 [1.269, 0.056,0.056]])
+
+    # Sn HCOO slab_001 OPT
+    adsorbates['HCOO'] = Atoms(symbols=['O', 'O', 'H', 'C'], positions=[[0., 0., 0.],
+                                                                        [-1.28744151, -0.11580243, 1.85385915],
+                                                                        [-2.03986964, -0.39016577, -0.02794676],
+                                                                        [-1.16506837, -0.17617949, 0.63972599]])
+
+    # Ni_slab_001_HCOO_bridge1
+    adsorbates['HCOO_bridge'] = Atoms(symbols=['O', 'O', 'H', 'C'], positions=[[0., 0., 0.0],
+                                                                               [-0.47151650, 0.11389140, 2.22092136],
+                                                                               [-1.93469193, -0.05542301, 0.78188290],
+                                                                               [-0.85602179, 0.02151939, 1.07467679]])
+
+    # Al HCOO slab_111 OPT
+    # adsorbates['HCOO'] = Atoms(symbols=['O','O','H','C'], positions=[[0., 0., 0.],
+    #                                                                 [-1.13072035,1.98749627,0.00916715],
+    #                                                                 [-0.51153205,1.01716509,1.68292964],
+    #                                                                 [-0.54716437,1.00148109,0.57785997]])
+
+    # MS dajian and vasp opt  c_terminate
+    # adsorbates['HCOOH'] = Atoms(symbols=['C','H','H','O','O'], positions=[[0., 0., 0.],
+    #                                                                 [-0.703,-0.61, -0.61],
+    #                                                                 [-0.071, 1.341, 1.341],
+    #                                                                 [-0.724, 0.822,0.822],
+    #                                                                 [1.211,-0.054, -0.054]])
+    # MS dajian and vasp opt  o_terminate
+    # adsorbates['HCOOH'] = Atoms(symbols=['O','O','H','H','C'], positions=[[0., 0., 0.],
+    #                                                                  [-1.93313348,0.87445518,0.87445520],
+    #                                                                  [-1.28451730,1.39529189,1.39529194],
+    #                                                                  [-1.91167291,-0.55369418,-0.55369414],
+    #                                                                  [-1.21421637,0.05432444,0.05432446]])
+
+    # MS dajian2
+    #  adsorbates['HCOOH'] = Atoms(symbols=['O','O','H','H','C'], positions=[[0., 0., 0.],
+    #                                                                   [-2.06702922,0.32547831,0.94247971],
+    #                                                                   [-0.33824904,0.55017242,1.96240784],
+    #                                                                   [-2.35272886,0.08525260,0.03473757],
+    #                                                                   [-0.70307463,0.28406014,0.95159009]])
+
+    # MS dajian2 and vasp opt by al_slab_001_hcooh,zaoqituijian
+    adsorbates['HCOOH_1'] = Atoms(symbols=['O', 'O', 'H', 'H', 'C'], positions=[[0., 0., 0.],
+                                                                                [-0.98445266, 1.86873934, 0.89084003],
+                                                                                [-0.85087110, 2.25841593, -0.05073748],
+                                                                                [-0.52887592, 0.22193275, 1.95839871],
+                                                                                [-0.48478260, 0.65699687, 0.94571982]])
+    # Ga_111_opt houqituijian(af first opt)
+    adsorbates['HCOOH'] = Atoms(symbols=['O', 'O', 'H', 'H', 'C'], positions=[[0., 0., 0.],
+                                                                              [1.24305276, 1.68125215, 1.10466022],
+                                                                              [-0.55237422, 1.02228632, 1.72323446],
+                                                                              [1.72616015, 1.92786370, 0.28815654],
+                                                                              [-0.03215103, 1.18574061, 0.76281079]])
     # For diatomics (and above), it's a good practice to manually relax the gases
     # and then see how far apart they are. Then put first atom at the origin, and
     # put the second atom directly above it.
@@ -214,7 +296,7 @@ def adsorbates():
     adsorbates['OOH'] = Atoms('OOH', positions=[[0., 0., 0.],
                                                 [1.28, 0., 0.67],
                                                 [1.44, -0.96, 0.81]])
-    adsorbates['OOH'].set_constraint([ase.constraints.Hookean(a1=0, a2=1, rt=1.6, k=10.),   # Bind OO
+    adsorbates['OOH'].set_constraint([ase.constraints.Hookean(a1=0, a2=1, rt=1.6, k=10.),  # Bind OO
                                       ase.constraints.Hookean(a1=1, a2=2, rt=1.37, k=5.)])  # Bind OH
 
     # For CHO, assumed C binds to surface (index 0), O (index 1), and H(index 2).
@@ -223,9 +305,10 @@ def adsorbates():
     adsorbates['CHO'] = Atoms('CHO', positions=[[0., 0., 1.],
                                                 # position of H
                                                 [-0.94, 0.2, 1.7],
-                                                [0.986, 0.6, 1.8]])     # position of O
-    adsorbates['CHO'].set_constraint([ase.constraints.Hookean(a1=0, a2=1, rt=1.59, k=5.),   # Bind CH, initially used k=7, lowered to 5
-                                      ase.constraints.Hookean(a1=0, a2=2, rt=1.79, k=5.)])  # Bind CO
+                                                [0.986, 0.6, 1.8]])  # position of O
+    adsorbates['CHO'].set_constraint(
+        [ase.constraints.Hookean(a1=0, a2=1, rt=1.59, k=5.),  # Bind CH, initially used k=7, lowered to 5
+         ase.constraints.Hookean(a1=0, a2=2, rt=1.79, k=5.)])  # Bind CO
 
     return adsorbates
 
@@ -277,8 +360,8 @@ def adsorption_filters(adsorbate=None):
 
     # Easy-to-read (and change) filters before we distribute them
     # into harder-to-read (but mongo-readable) structures
-    f_max = 0.5                 # Maximum atomic force [eV/Ang]
-    ads_move_max = 1.5          # Maximum distance the adsorbate can move [Ang]
+    f_max = 0.5  # Maximum atomic force [eV/Ang]
+    ads_move_max = 1.5  # Maximum distance the adsorbate can move [Ang]
     # Maximum distance that any atom can move on bare slab [Ang]
     bare_slab_move_max = 0.5
     # Maximum distance that any slab atom can move after adsorption [Ang]
@@ -363,8 +446,8 @@ def surface_filters():
 
     # Easy-to-read (and change) filters before we distribute them
     # into harder-to-read (but mongo-readable) structures
-    f_max = 0.5                 # Maximum atomic force [eV/Ang]
-    max_surface_movement = 1.   # Maximum distance that any atom can move [Ang]
+    f_max = 0.5  # Maximum atomic force [eV/Ang]
+    max_surface_movement = 1.  # Maximum distance that any atom can move [Ang]
 
     # Distribute filters into mongo-readable form
     filters['surface_structures.0.results.fmax'] = {'$lt': f_max}
