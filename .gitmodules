@@ -1,6 +1,6 @@
 [submodule "GASpy_regressions"]
 	path = GASpy_regressions
-	url = git@github.com:ktran9891/GASpy_regressions.git
+	url = https://github.com/ktran9891/GASpy_regressions.git
 [submodule "GASpy_feedback"]
 	path = GASpy_feedback
-	url = git@github.com:ktran9891/GASpy_feedback.git
+	url = https://github.com/ktran9891/GASpy_feedback.git
