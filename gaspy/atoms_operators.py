@@ -88,8 +88,8 @@ def orient_atoms_upwards(atoms):
     atoms = atoms.copy()
 
     rotate(atoms,
-           atoms.cell[2], (0, 0, 1),    # Point the z-direction upwards
-           atoms.cell[0], (1, 0, 0),    # Point the x-direction forwards
+           atoms.cell[2], (0, 0, 1),  # Point the z-direction upwards
+           atoms.cell[0], (1, 0, 0),  # Point the x-direction forwards
            rotate_cell=True)
     return atoms
 
@@ -229,8 +229,8 @@ def tile_atoms(atoms, min_x, min_y):
     '''
     x_length = np.linalg.norm(atoms.cell[0])
     y_length = np.linalg.norm(atoms.cell[1])
-    nx = int(math.ceil(min_x/x_length))
-    ny = int(math.ceil(min_y/y_length))
+    nx = int(math.ceil(min_x / x_length))
+    ny = int(math.ceil(min_y / y_length))
     n_xyz = (nx, ny, 1)
     atoms_tiled = atoms.repeat(n_xyz)
     return atoms_tiled, (nx, ny)
@@ -399,7 +399,7 @@ def find_adsorption_vector(bulk_cn_dict, slab_atoms, surface_indices, adsorption
 
     # get the index of the closest 4 atom to the site to form a plane
     # chose 4 because it will gaurantee a more accurate plane for edge cases
-    nn_dists_from_U = {idx: np.linalg.norm(slab_atoms[idx].position-slab_atoms[U_index].position)
+    nn_dists_from_U = {idx: np.linalg.norm(slab_atoms[idx].position - slab_atoms[U_index].position)
                        for idx in surface_nn_indices}
     sorted_dists = {idx: distance for idx, distance in sorted(nn_dists_from_U.items(), key=lambda item: item[1])}
     closest_4_nn_indices = np.array(list(sorted_dists.keys())[:4], dtype=int)
@@ -421,7 +421,7 @@ def find_adsorption_vector(bulk_cn_dict, slab_atoms, surface_indices, adsorption
     return vector
 
 
-def add_adsorbate_onto_slab(adsorbate, slab, site):
+def add_adsorbate_onto_slab(adsorbate, slab, site, constrain: bool = True):
     '''
     There are a lot of small details that need to be considered when adding an
     adsorbate onto a slab. This function will take care of those details for
@@ -439,7 +439,7 @@ def add_adsorbate_onto_slab(adsorbate, slab, site):
                 constraints should be preserved. Slab atoms will be tagged
                 with a `0` and adsorbate atoms will be tagged with a `1`.
     '''
-    adsorbate = adsorbate.copy()    # To make sure we don't mess with the original
+    adsorbate = adsorbate.copy()  # To make sure we don't mess with the original
     adsorbate.translate(site)
 
     adslab = adsorbate + slab
@@ -449,14 +449,16 @@ def add_adsorbate_onto_slab(adsorbate, slab, site):
     # We set the tags of slab atoms to 0, and set the tags of the adsorbate to 1.
     # In future version of GASpy, we intend to set the tags of co-adsorbates
     # to 2, 3, 4... etc (per co-adsorbate)
-    tags = [1]*len(adsorbate)
-    tags.extend([0]*len(slab))
+    tags = [1] * len(adsorbate)
+    tags.extend([0] * len(slab))
     adslab.set_tags(tags)
 
-    # Fix the sub-surface atoms
-    adslab_constrained = constrain_slab(adslab)
-
-    return adslab_constrained
+    if constrain:
+        # Fix the sub-surface atoms
+        adslab_constrained = constrain_slab(adslab)
+        return adslab_constrained
+    else:
+        return adslab
 
 
 def fingerprint_adslab(atoms):
