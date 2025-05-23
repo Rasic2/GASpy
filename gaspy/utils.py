@@ -4,11 +4,13 @@ __authors__ = ['Kevin Tran', 'Zack Ulissi']
 __emails__ = ['ktran@andrew.cmu.edu', 'zulissi@andrew.cmu.edu']
 
 import gc
-import os
 import json
+import os
+from collections import OrderedDict
+from collections.abc import Iterable, Mapping
+
 import numpy as np
 from multiprocess import Pool
-from collections import OrderedDict, Iterable, Mapping
 from tqdm import tqdm
 
 
@@ -28,15 +30,15 @@ def print_dict(dict_, indent=0):
             if key != 'spec':
                 print('\t' * indent + str(key))
                 if isinstance(value, dict) or isinstance(value, list):
-                    print_dict(value, indent+1)
+                    print_dict(value, indent + 1)
                 else:
-                    print('\t' * (indent+1) + str(value))
+                    print('\t' * (indent + 1) + str(value))
     elif isinstance(dict_, list):
         for item in dict_:
             if isinstance(item, dict) or isinstance(item, list):
-                print_dict(item, indent+1)
+                print_dict(item, indent + 1)
             else:
-                print('\t' * (indent+1) + str(item))
+                print('\t' * (indent + 1) + str(item))
     else:
         pass
 
@@ -64,7 +66,9 @@ def read_rc(query=None):
             try:
                 rc_contents = rc_contents[key]
             except KeyError as error:
-                raise KeyError('Check the spelling/capitalization of the key/values you are looking for').with_traceback(error.__traceback__)
+                raise KeyError(
+                    'Check the spelling/capitalization of the key/values you are looking for').with_traceback(
+                    error.__traceback__)
 
     return rc_contents
 
@@ -204,7 +208,7 @@ def _chunk(iterable, n):
                     same contents as the `iterable` you passed in.
     '''
     for i in range(0, len(iterable), n):
-        yield iterable[i:i+n]
+        yield iterable[i:i + n]
 
 
 def multimap_method(instance, method, inputs, chunked=False, processes=32,
